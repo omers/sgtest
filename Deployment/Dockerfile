@@ -4,8 +4,10 @@ RUN apk update && apk add py-configobj libusb py-pip python-dev gcc linux-header
 	libffi-dev openssl-dev
 RUN mkdir /PythonApp/
 
-COPY . /PythonApp/
-
+ADD requirements.txt /PythonApp/
 RUN pip install -r /PythonApp/requirements.txt
 
+ADD . /PythonApp/
 
+WORKDIR /PythonApp/
+CMD python app.py
