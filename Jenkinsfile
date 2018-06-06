@@ -1,34 +1,18 @@
 pipeline {
     agent any
     stages {
-        stage('Non-Parallel Stage') {
+        stage('Build') {
             steps {
                 echo 'This stage will be executed first.'
             }
         }
-        stage('Parallel Stage') {
-            when {
-                branch 'master'
-            }
-            failFast true
-            parallel {
-                stage('Branch A') {
-                    agent {
-                        label "for-branch-a"
-                    }
-                    steps {
-                        echo "On Branch A"
-                    }
-                }
-                stage('Branch B') {
-                    agent {
-                        label "for-branch-b"
-                    }
-                    steps {
-                        echo "On Branch B"
-                    }
-                }
+        stage('Test') {
+            steps {
+               sh 'echo "Pytest"'
             }
         }
+	stage('Deploy') {
+	   echo 'Scazal Build'
+	}
     }
 }
