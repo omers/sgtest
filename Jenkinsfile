@@ -11,8 +11,10 @@ pipeline {
                sh 'echo "Pytest"'
             }
         }
-	stage('Deploy') {
-	   echo 'Scazal Build'
-	}
+        stage('Deploy') {
+            steps {
+   		       echo 'Scazal Build'
+            }
+        }
     }
 }
