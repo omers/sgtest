@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'This stage will be executed first.'
+                git 'https://github.com/omers/sgtest.git'
             }
         }
         stage('Test') {
